@@ -32,6 +32,7 @@ export const appRouter = t.router({
         )
         .mutation(async ({ input }) => {
             // Implement logic to register a user for an event
+            console.log(input);
         }),
     submitTithe: t.procedure
         .input(
@@ -44,6 +45,7 @@ export const appRouter = t.router({
         )
         .mutation(async ({ input }) => {
             // Implement logic to process a tithe payment
+            console.log(input);
         }),
     updateUser: t.procedure
         .input(
@@ -56,6 +58,7 @@ export const appRouter = t.router({
         )
         .mutation(async ({ input }) => {
             // Implement logic to update user details
+            console.log(input);
         }),
 });
 

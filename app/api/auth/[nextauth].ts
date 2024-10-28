@@ -20,14 +20,13 @@ export default NextAuth({
                 },
                 password: { label: 'Password', type: 'password' },
             },
-            async authorize(credentials,
-                req) {
+            async authorize(credentials) {
                 // Implement your authentication logic here
                 const user = await prisma.user.findUnique({
                     where: { email: credentials?.email },
                 });
 
-                if (user && (await bcrypt.compare(credentials?.password!, user.password))) {
+                if (user && (await bcrypt.compare(credentials?.password as string, user.password))) {
                     return user; // Fixed: return statement should be on the same line
                 }
                 return null;
@@ -51,14 +50,14 @@ export default NextAuth({
             return baseUrl;
         },
     },
-    events: {
-        async signIn(message: any) {
-            console.log('Sign in event:', message);
-        },
-        async signOut(message: any) {
-            console.log('Sign out event:', message);
-        },
-        // ... other events
-    },
+    // events: {
+    //     async signIn(message: string) {
+    //         console.log('Sign in event:', message);
+    //     },
+    //     async signOut(message: any) {
+    //         console.log('Sign out event:', message);
+    //     },
+    //     // ... other events
+    // },
     debug: true,
 });

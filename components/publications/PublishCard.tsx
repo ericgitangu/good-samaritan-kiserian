@@ -4,7 +4,7 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import Link from '@mui/material/Link';
-import { Publication } from '../../../types/publication';
+import { Publication } from '../../types/publication';
 
 interface PublicationCardProps {
     publication: Publication;

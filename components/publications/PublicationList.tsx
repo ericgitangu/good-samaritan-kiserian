@@ -2,7 +2,7 @@
 import * as React from 'react';
 import Grid from '@mui/material/Grid';
 import PublicationCard from './PublishCard';
-import { Publication } from '../../../types/publication'; // Assuming you have a Publication type defined
+import { Publication } from '../../types/publication'; // Assuming you have a Publication type defined
 
 interface PublicationListProps {
     publications: Publication[];

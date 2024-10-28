@@ -34,29 +34,29 @@ const typeDefs = gql`
 `;
 
 const resolvers = {
-    Query: {
-        events: async () => {
-            const events = await prisma.event.findMany();
-            return events;
-        },
-        publications: async () => {
-            const publications = await prisma.publication.findMany();
-            return publications;
-        },
-        user: async (_parent: any, args: { id: string }) => {
-            const user = await prisma.user.findUnique({
-                where: { id: args.id },
-            });
-            return user;
-        },
+  Query: {
+    events: async () => {
+      const events = await prisma.event.findMany();
+      return events;
     },
+    publications: async () => {
+      const publications = await prisma.publication.findMany();
+      return publications;
+    },
+    user: async (_parent: any, args: { id: string }) => {
+      const user = await prisma.user.findUnique({
+        where: { id: args.id },
+      });
+      return user;
+    },
+  },
 };
 
 const server = new ApolloServer({
-    typeDefs,
-    resolvers,
+  typeDefs,
+  resolvers,
 });
 
 export default startServerAndCreateNextHandler(server, {
-    context: async (req: any, res: any) => ({ req, res }),
+  context: async (req: any, res: any) => ({ req, res }),
 });
